@@ -261,10 +261,14 @@ public  class HomeTask_1Utils {
      */
     static void Task11(){
        int count =  0;
-        for (int i = 0;i<=24; i++){
+        for (int i = 0;i<24; i++){
            for (int j =0; j<=59; j++) {
               // count =  (sumDigits(i) == sumDigits(j))  ? ++count : count;   -- thought that need same sum of numbers first
               count =  (i/10%10==j%10 && i%10==j/10%10)  ? ++count : count;
+
+               if(i/10%10==j%10 && i%10==j/10%10)
+                   System.out.println(i + " " + j);
+
            }
        }
         System.out.print( "Symmetrical time count =  " + count);
