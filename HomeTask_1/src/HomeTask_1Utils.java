@@ -108,8 +108,8 @@ public  class HomeTask_1Utils {
         }
         char[] numberAsChars = numberToCheck.toString().toCharArray();
         char maxValue = '0';
-        for (int i = 0; i < numberAsChars.length; i++) {
-            maxValue = (char) Math.max(numberAsChars[i], maxValue);
+        for (char numberAsChar : numberAsChars) {
+            maxValue = (char) Math.max(numberAsChar, maxValue);
         }
         System.out.printf("Number = %s", numberToCheck);
         System.out.println();
@@ -149,8 +149,8 @@ public  class HomeTask_1Utils {
           }
         }
 
-        for(int j = 0; j <  arg.length; j++) {
-            System.out.print(arg[j] + "  ");
+        for (int anArg : arg) {
+            System.out.print(anArg + "  ");
         }
     }
 
@@ -158,19 +158,30 @@ public  class HomeTask_1Utils {
      * 1) Создайте программу, выводящую на экран все четырёхзначные числа последовательности 1000 1003 1006 1009 1012 1015 ….
      */
 
-    static void Task5 (int[] arg){
-        for(int j = 0; j <  arg.length; j++) {
-            System.out.print(arg[j] + "  ");
+    static void Task5 (){
+//        for(int j = 0; j <  arg.length; j++) {
+//            System.out.print(arg[j] + "  ");
+//        }
+        System.out.println("All numbers with 4 digits - ");
+        for (int i=1000; i<=9999;i+=3){
+            System.out.print(i + " ");
         }
     }
 
     /**
      * 2) Создайте программу, выводящую на экран все неотрицательные элементы последовательности 90 85 80 75 70 65 60 ….
      */
-    static void Task6 (int[] arg){
-        for(int j = 0; j <  arg.length; j++) {
-            if (arg[j]>0)
-            System.out.print(arg[j] + "  ");
+//    static void Task6 (int[] arg){
+//        for(int j = 0; j <  arg.length; j++) {
+//            if (arg[j]>0)
+//            System.out.print(arg[j] + "  ");
+//        }
+//    }
+
+    static void Task6 (){
+        System.out.println("All positive numbers");
+        for(int j = 90; j >0; j-=5) {
+            System.out.print( j + "  ");
         }
     }
     /**
@@ -204,9 +215,9 @@ public  class HomeTask_1Utils {
     static void Task9(){
        int a1 = 1;
        int a2 = 1;
-       int an = 0;
+       int an;
         System.out.print( a1 + " " + a2 + " ");
-       for (int i = 3 ; i<11 ; i++) {
+       for (int i = 3 ; i<=11 ; i++) {
            an = a1+a2;
            a1 = a2;
            a2=an;
@@ -252,7 +263,8 @@ public  class HomeTask_1Utils {
        int count =  0;
         for (int i = 0;i<=24; i++){
            for (int j =0; j<=59; j++) {
-               count =  (sumDigits(i) == sumDigits(j))  ? ++count : count;
+              // count =  (sumDigits(i) == sumDigits(j))  ? ++count : count;   -- thought that need same sum of numbers first
+              count =  (i/10%10==j%10 && i%10==j/10%10)  ? ++count : count;
            }
        }
         System.out.print( "Symmetrical time count =  " + count);

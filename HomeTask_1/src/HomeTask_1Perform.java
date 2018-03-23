@@ -28,7 +28,7 @@ public class HomeTask_1Perform {
      */
     public static void performTask3(){
         System.out.println("*****Task_3*****");
-        Long num  = new Long(233344590);
+        Long num  = 233344590L;
         HomeTask_1Utils.Task3(num);
         System.out.println();
     }
@@ -48,8 +48,8 @@ public class HomeTask_1Perform {
      */
     public static void performTask5(){
         System.out.println("*****Task_5*****");
-        int[] arg = {12,3,5,-4,7,-90};
-        HomeTask_1Utils.Task5(arg);
+       // int[] arg = {12,3,5,-4,7,-90};
+        HomeTask_1Utils.Task5();
         System.out.println();
     }
 
@@ -58,8 +58,8 @@ public class HomeTask_1Perform {
      */
     public static void performTask6(){
         System.out.println("*****Task_6*****");
-        int[] arg = {12,3,5,-4,7,-90};
-        HomeTask_1Utils.Task6(arg);
+        //int[] arg = {12,3,5,-4,7,-90};
+        HomeTask_1Utils.Task6();
         System.out.println();
     }
 
