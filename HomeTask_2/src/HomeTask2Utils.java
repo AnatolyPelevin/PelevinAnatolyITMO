@@ -108,7 +108,7 @@ public class HomeTask2Utils {
          boolean check = true;
          int privElem = 0;
          for (int i = 0; i < 4; i ++) {
-             array1[i] = 10 + (int) (Math.random() * 99);
+             array1[i] = (int)((Math.random()*90)+10);
              System.out.print(array1[i] + " ");
 
              if(i==0){
