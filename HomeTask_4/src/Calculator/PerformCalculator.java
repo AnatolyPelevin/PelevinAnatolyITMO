@@ -6,7 +6,6 @@ import java.util.List;
 public class PerformCalculator {
     public static void performCalculator () {
         System.out.println("****Start test Calculator.****");
-        OperationBase op = OperationFactory.createOperation(OperationType.ADD);
         List<OperationBase> opList = new ArrayList<OperationBase>();
         opList.add(OperationFactory.createOperation(OperationType.ADD));
         opList.add(OperationFactory.createOperation(OperationType.SUB));
