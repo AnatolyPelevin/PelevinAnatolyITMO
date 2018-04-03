@@ -3,9 +3,12 @@ package School.PersonalAndStudents;
 import java.util.Date;
 
 public abstract class AbsrtactHumane implements HumaneInterface {
-    private String Name;
-    private Date dayOfBirth;
+    protected String Name;
+    protected Date dayOfBirth;
 
+    public AbsrtactHumane(String Name){
+        this.Name = Name;
+        }
     @Override
     public String getName() {
         return Name;
@@ -26,5 +29,5 @@ public abstract class AbsrtactHumane implements HumaneInterface {
       this.dayOfBirth = dayOfBirth;
     }
 
-    public abstract void setClass();
+    public abstract void setClass(Class classToAdd);
 }
