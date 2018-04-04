@@ -13,8 +13,6 @@ public class HandlerFactory {
             default:
                 throw new IllegalArgumentException("Record writer is not supported for record type: "
                         + recordType);
-
         }
-
     }
 }
