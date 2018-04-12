@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.counting;
@@ -93,29 +94,40 @@ public class CollectionTraining {
 
     public void lettersCountByPercent() {
         System.out.println("*******Show letters count by percent!*******");
-//TODO
-//       Map<String, Long> wordCount = null;
-//        try (InputStream inputStream = getClass().getResourceAsStream(fileName)) {
-//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-//
-//            wordCount = bufferedReader.lines()
-//                   // .flatMap(line -> Arrays.stream(line.trim().split("\\s")))
-//                    .map(word -> word.replaceAll("[^a-zA-Z]", "").toLowerCase().trim())
-//                    .filter(word -> word.length() > 0)
-//                    //.map(word->word.toCharArray())
-//                    .map(word -> new AbstractMap.SimpleEntry<>(word, 1))
-//                    .collect(groupingBy(AbstractMap.SimpleEntry::getKey, counting()));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        wordCount.forEach((k, v) -> System.out.println(String.format("%s ==>> %d", k, v)));
+
+       Map<Character, Long> letterCount = null;
+        try (InputStream inputStream = getClass().getResourceAsStream(fileName)) {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+            letterCount =
+                    bufferedReader.lines()
+                    .flatMap(line -> Arrays.stream(line.trim().split("\\s")))
+                    .map(word -> word.replaceAll("[^a-zA-Z]", "").toLowerCase().trim())
+                            .filter(word -> word.length() > 0)
+                            .map(word->word.chars().mapToObj(ch -> (char)ch))
+                            .flatMap(s-> s)
+                            .collect(Collectors.toList())
+                            .stream()
+                            .map(ch -> new AbstractMap.SimpleEntry<>(ch, 1))
+                            .collect(groupingBy(AbstractMap.SimpleEntry::getKey, counting()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        final long cnt  = letterCount.values().stream().mapToInt(Number::intValue).sum();
+         System.out.println(String.format("All letters in text  = %d", cnt));
+
+         letterCount.forEach((k, v) -> System.out.println(String.format("Letter %s ==>> count: %f %%", k, (float)((float)v*100/(float)cnt))));
 
     System.out.println("**************");
     }
 
 
-
+    /**
+     * Использовал регулярное выражение с удалением символов. Делит слова не совсем корреткно.
+     * В задании 5 (lettersCountByPercent) более корретнко работает. Решил оставтиь, как пример для
+     * тренировки.
+     */
     private void calcUniqueWordsCount() {
         try (InputStream inputStream = getClass().getResourceAsStream(fileName)) {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

@@ -11,10 +11,10 @@
 public class Main {
     public static void main(String[] args) {
         CollectionTraining c  = new CollectionTraining("");
-//        c.showUniqueWordsCount();
-//        c.showTopNWords(10);
-//        c.groupWordsByLetterCount();
-//        c.groupWordsByLetterCountWithFilter();
+        c.showUniqueWordsCount();
+        c.showTopNWords(10);
+        c.groupWordsByLetterCount();
+        c.groupWordsByLetterCountWithFilter();
         c.lettersCountByPercent();
     }
 }
