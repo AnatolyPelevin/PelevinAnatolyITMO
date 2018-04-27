@@ -13,33 +13,37 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        FileCopyTask fileCopyTask = new FileCopyTask();
-        fileCopyTask.writeToFileTest(fileCopyTask.getOne(),"Test_string");
-        try {
-            fileCopyTask.fileCopy();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        FileCopyTask fileCopyTask = new FileCopyTask();
+//        fileCopyTask.writeToFileTest(fileCopyTask.getOne(),"Test_string");
+//        try {
+//            fileCopyTask.fileCopy();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            fileCopyTask.splitFile(null, null);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            fileCopyTask.joinFiles(null, null, "test_part*");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        DecodeEncodeXOR decXOR = new DecodeEncodeXOR();
+//        try {
+//            decXOR.decodeEncode(null,null,null);
+//            decXOR.decodeEncode("HelpFile/DECODED_test.txt","ENCODED_test.txt",null);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        try {
-            fileCopyTask.splitFile(null, null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        try {
-            fileCopyTask.joinFiles(null, null, "test_part*");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        DecodeEncodeXOR decXOR = new DecodeEncodeXOR();
-        try {
-            decXOR.decodeEncode(null,null,null);
-            decXOR.decodeEncode("HelpFile/DECODED_test.txt","ENCODED_test.txt",null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        DecodeByFile dec = new DecodeByFile();
+        dec.TestClass();
     }
 }
