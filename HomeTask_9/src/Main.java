@@ -1,3 +1,5 @@
+//import DecodeEncodeXORTask.DecodeEncodeXOR;
+
 import java.io.IOException;
 
 /**
@@ -27,6 +29,14 @@ public class Main {
 
         try {
             fileCopyTask.joinFiles(null, null, "test_part*");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        DecodeEncodeXOR decXOR = new DecodeEncodeXOR();
+        try {
+            decXOR.decodeEncode(null,null,null);
+            decXOR.decodeEncode("HelpFile/DECODED_test.txt","ENCODED_test.txt",null);
         } catch (IOException e) {
             e.printStackTrace();
         }
