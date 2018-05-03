@@ -1,4 +1,7 @@
+import DecoratorTask.PerformDecoraterTask;
 import ListenerTask.PerformListner;
+
+import java.io.IOException;
 
 /**
  * 1. Используя паттерн Decorator создать шифрующие с помощью XOR потоки ввода/вывода.
@@ -36,5 +39,13 @@ import ListenerTask.PerformListner;
 public class Main {
     public static void main(String[] args) {
         PerformListner.performListner();
+
+        PerformDecoraterTask performDecoraterTask = new PerformDecoraterTask();
+        try {
+            performDecoraterTask.decodeEncode(null,null,null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
