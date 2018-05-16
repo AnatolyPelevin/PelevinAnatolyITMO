@@ -101,7 +101,9 @@ public class WordCount {
                         Arrays.stream(strings).forEach((String str) -> putWordCount(str));
                     }
             );
-            result.putAll(wordCnt);
+            synchronized (result){
+                result.putAll(wordCnt);
+            }
         }
 
         private void putWordCount(String word) {
