@@ -6,11 +6,13 @@ import dictionaries.RecordType;
 import job.TransformJob;
 import job.TransformJobBuilder;
 import job.transform.types.RwRecord;
+import objectmodel.RecordFilterParameter;
 import objectmodel.RwField;
 import objectmodel.RwFile;
 import reader.FileReaderInterface;
 import reader.RecordReaderException;
 import reader.readerfactory.FileReaderFactoryImpl;
+import reader.recordfilter.KeywordRecordFilter;
 import reader.recordparser.RawRecordParserFactoryImpl;
 import reader.recordparser.RawRecordParserInterface;
 import vendors.bloomberg.BBGFileAttributeParser;
@@ -31,6 +33,28 @@ public class ShowWork {
         metaFile.setFilename("File");
         metaFile.setRecordTypeString(RecordType.DELIMITED.getName());
         metaFile.setAttributeParserClass(BBGFileAttributeParser.class.getName());
+        metaFile.setRecordFilterClass(KeywordRecordFilter.class.getName());
+
+        //prepare recordfilter for metafile
+        Set<RecordFilterParameter> recordFilterParameterSet = new HashSet<>();
+
+        RecordFilterParameter recordFilterParameter  = new RecordFilterParameter();
+        recordFilterParameter.setName("START_KEY_WORD");
+        recordFilterParameter.setValue("START-OF-DATA");
+        recordFilterParameterSet.add(recordFilterParameter);
+
+        RecordFilterParameter recordFilterParameter1  = new RecordFilterParameter();
+        recordFilterParameter1.setName("SKIP_PREFIX");
+        recordFilterParameter1.setValue("#");
+        recordFilterParameterSet.add(recordFilterParameter1);
+
+        RecordFilterParameter recordFilterParameter2  = new RecordFilterParameter();
+        recordFilterParameter2.setName("END_KEY_WORD");
+        recordFilterParameter2.setValue("END-OF-DATA");
+        recordFilterParameterSet.add(recordFilterParameter2);
+
+        //add frecorfdfilter to metafile
+        metaFile.setRecordFilterParameters(recordFilterParameterSet);
 
         //Prepare Record for metafile
         RwRecord rwRecord = new RwRecord();

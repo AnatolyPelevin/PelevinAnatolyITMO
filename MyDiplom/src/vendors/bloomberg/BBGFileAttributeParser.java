@@ -1,13 +1,14 @@
 package vendors.bloomberg;
 
+import reader.RecordReaderException;
 import reader.fileattribute.FileAttribute;
 import reader.fileattribute.FileAttributeParser;
-import reader.RecordReaderException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class BBGFileAttributeParser implements FileAttributeParser {
@@ -53,7 +54,8 @@ public class BBGFileAttributeParser implements FileAttributeParser {
         if (record.startsWith(TIME_STARTED_PREFIX)) {
             record = record.substring(TIME_STARTED_PREFIX.length());
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+            SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT,
+                    Locale.ENGLISH);
             Date date;
 
             try {

@@ -1,9 +1,8 @@
 package reader.recordparser;
 
-import job.transform.types.ETLRecord;
-
-import java.util.List;
+import job.transform.types.RwRecord;
 
 public interface RawRecordParserInterface {
-    List<ETLRecord> parseRecord(String record) throws RecordParserException;
+    //List<ETLRecord> parseRecord(String record) throws RecordParserException;
+   RwRecord parseRecord(String record) throws RecordParserException;
 }

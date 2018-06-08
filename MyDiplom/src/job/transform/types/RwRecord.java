@@ -177,7 +177,7 @@ public class RwRecord {
         copy.setRecordTypeString(getRecordTypeString());
         copy.setUniqueid(getUniqueid());
         copy.setRwFile(getRwFile());
-
+        copy.setRwFields(getRwFields());
 
         return copy;
     }

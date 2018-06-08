@@ -1,7 +1,6 @@
 package reader.recordparser;
 
 import dictionaries.DataType;
-import job.transform.types.ETLRecord;
 import job.transform.types.ETLRecordFactory;
 import job.transform.types.RwRecord;
 import objectmodel.RwField;
@@ -38,7 +37,7 @@ public class DelimitedRecordParser implements RawRecordParserInterface {
     }
 
     @Override
-    public List<ETLRecord> parseRecord(String record) throws RecordParserException {
+    public RwRecord parseRecord(String record) throws RecordParserException {
         fields = splitter.split(record, delimiter);
 
         //TODO make getRecordMetadata to find metaRecord if there will be few of them for one metafile
@@ -51,20 +50,21 @@ public class DelimitedRecordParser implements RawRecordParserInterface {
         //TODO create presentation for record in ETL
         //ETLRecord etlRecord = etlRecordFactory.createETLRecord(metaRecord);
 
+        RwRecord metaRecordFiled;
         try {
          //   populateETLRecord(record, etlRecord);
-            populateETLRecord(record,  metaRecord);
+            metaRecordFiled =  populateETLRecord(record,  metaRecord);
         }
         catch (Exception e) {
             throw new RecordParserException(e, metaRecord, record);
         }
 
-        return null;
+        return metaRecordFiled;
     }
 
 
   //  protected void populateETLRecord(String record,  ETLRecord etlRecord)
-  protected void populateETLRecord(String record,  RwRecord metaRecord)
+  protected RwRecord populateETLRecord(String record,  RwRecord metaRecord)
             throws Exception {
         if (fields == null) {
             fields = splitter.split(record, delimiter);
@@ -83,5 +83,6 @@ public class DelimitedRecordParser implements RawRecordParserInterface {
           String value = fields[position];
           rwField.setFieldValue(value);
       }
+      return metaRecordCopy;
     }
 }

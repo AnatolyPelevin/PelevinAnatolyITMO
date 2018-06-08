@@ -1,8 +1,12 @@
 package job;
 
+import job.transform.types.RwRecord;
+import objectmodel.RwField;
 import reader.FileReaderInterface;
 import reader.recordparser.RawRecordParserInterface;
 import writer.FileWriterInterface;
+
+import java.util.Set;
 
 import static utils.Arguments.checkNotNull;
 
@@ -27,8 +31,11 @@ public class TransformJob {
 
         try {
             while ((thisLine = fileReaderInterface.nextRecord()) != null) {
-                System.out.println(thisLine);
-                rawRecordParserInterface.parseRecord(thisLine);
+               // System.out.println(thisLine);
+                RwRecord rwRecord =  rawRecordParserInterface.parseRecord(thisLine);
+                Set<RwField> rwFields = rwRecord.getRwFields();
+                //System.out.println(rwRecord.toString());
+                rwFields.stream().forEach(r->System.out.println(r.getFieldValue()));
             }
         } catch(Exception e) {
             e.printStackTrace();
