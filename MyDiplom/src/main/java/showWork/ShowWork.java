@@ -75,6 +75,60 @@ public class ShowWork {
         rwFieldTICKER.setPosition(0);
         rwFields.add(rwFieldTICKER);
 
+        RwField rwFieldCPN = new RwField();
+        rwFieldCPN.setDataType(DataType.DECIMAL);
+        rwFieldCPN.setFieldName("CPN");
+        rwFieldCPN.setPosition(1);
+        rwFields.add(rwFieldCPN);
+
+        RwField rwFieldMATURITY = new RwField();
+        rwFieldMATURITY.setDataType(DataType.DATE);
+        rwFieldMATURITY.setFieldName("MATURITY");
+        rwFieldMATURITY.setPosition(2);
+        rwFields.add(rwFieldMATURITY);
+
+        RwField rwFieldSERIES = new RwField();
+        rwFieldSERIES.setDataType(DataType.STRING);
+        rwFieldSERIES.setFieldName("SERIES");
+        rwFieldSERIES.setPosition(3);
+        rwFields.add(rwFieldSERIES);
+
+        RwField rwFieldNAME = new RwField();
+        rwFieldNAME.setDataType(DataType.STRING);
+        rwFieldNAME.setFieldName("NAME");
+        rwFieldNAME.setPosition(4);
+        rwFields.add(rwFieldNAME);
+
+        RwField rwFieldSHORT_NAME = new RwField();
+        rwFieldSHORT_NAME.setDataType(DataType.STRING);
+        rwFieldSHORT_NAME.setFieldName("SHORT_NAME");
+        rwFieldSHORT_NAME.setPosition(5);
+        rwFields.add(rwFieldSHORT_NAME);
+
+        RwField rwFieldISSUER_INDUSTRY = new RwField();
+        rwFieldISSUER_INDUSTRY.setDataType(DataType.STRING);
+        rwFieldISSUER_INDUSTRY.setFieldName("ISSUER_INDUSTRY");
+        rwFieldISSUER_INDUSTRY.setPosition(6);
+        rwFields.add(rwFieldISSUER_INDUSTRY);
+
+        RwField rwFieldMARKET_SECTOR_DES = new RwField();
+        rwFieldMARKET_SECTOR_DES.setDataType(DataType.STRING);
+        rwFieldMARKET_SECTOR_DES.setFieldName("MARKET_SECTOR_DES");
+        rwFieldMARKET_SECTOR_DES.setPosition(7);
+        rwFields.add(rwFieldMARKET_SECTOR_DES);
+
+        RwField rwFieldCPN_FREQ = new RwField();
+        rwFieldCPN_FREQ.setDataType(DataType.INTEGER);
+        rwFieldCPN_FREQ.setFieldName("CPN_FREQ");
+        rwFieldCPN_FREQ.setPosition(8);
+        rwFields.add(rwFieldCPN_FREQ);
+
+        RwField rwFieldCPN_TYP = new RwField();
+        rwFieldCPN_TYP.setDataType(DataType.STRING);
+        rwFieldCPN_TYP.setFieldName("CPN_TYP");
+        rwFieldCPN_TYP.setPosition(9);
+        rwFields.add(rwFieldCPN_TYP);
+
         //Add fields to the record
         rwRecord.setRwFields(rwFields);
 
@@ -87,11 +141,17 @@ public class ShowWork {
         Path wapPath = prepareFile();
 
         File file = wapPath.toFile();
+
+        //File reader
         FileReaderFactoryImpl fileReaderFactory = new FileReaderFactoryImpl(metaFile);
         FileReaderInterface fileReaderInterface =  fileReaderFactory.createFileParser(file);
 
+        //Record parser
         RawRecordParserFactoryImpl rawRecordParserFactoryImpl = new RawRecordParserFactoryImpl();
         RawRecordParserInterface rawRecordParserInterface  = rawRecordParserFactoryImpl.createRecordParser(metaFile);
+
+        //Record writer
+        //TODO Record writer
 
         TransformJobBuilder builder = new TransformJobBuilder();
         TransformJob transformJob = builder

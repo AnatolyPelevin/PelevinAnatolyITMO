@@ -22,7 +22,7 @@ public class TransformJob {
     TransformJob(TransformJobBuilder builder) {
         this.fileReaderInterface = checkNotNull(builder.getFileReaderInterface(), "fileReaderInterface");
         this.rawRecordParserInterface = checkNotNull(builder.getRawRecordParserInterface(), "rawRecordParserInterface");
-//        this.fileWriterInterface = checkNotNull(builder.getFileWriterIntreface(), "fileWriterInterface");
+        this.fileWriterInterface = checkNotNull(builder.getFileWriterIntreface(), "fileWriterInterface");
 
     }
 
