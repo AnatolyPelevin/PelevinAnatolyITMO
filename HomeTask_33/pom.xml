@@ -24,9 +24,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgres-jdbc-driver.version}</version>
+            <version>42.2.2</version>
         </dependency>
         <dependency>
             <groupId>c3p0</groupId>

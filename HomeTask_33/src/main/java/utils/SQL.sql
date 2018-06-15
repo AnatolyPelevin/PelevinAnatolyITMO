@@ -37,7 +37,7 @@ create or replace function user_info_add_update_delete(
      BEGIN
        IF (_user_id is null) or (_user_id = 0) THEN
           BEGIN
-           insert into user_info (user_name, first_name) values (_user_name, _first_name) RETURNING id into _user_id;
+           insert into user_info (user_name, first_name) values (_user_name, _first_name) RETURNING user_id into _user_id;
            return _user_id;
           END;
         ELSE
@@ -56,3 +56,6 @@ create or replace function user_info_add_update_delete(
  END;
 
  $$LANGUAGE plpgsql;
+
+
+select * from user_info;
