@@ -19,7 +19,9 @@ public class RwField  {
         private Collection<FieldUtilised> fieldUtilisedsByOutRwFieldId;
         private RwRecord rwRecord;
         private DataType dataType;
-         private String fieldValue;
+        private String fieldValue;
+        private Integer decimalPosition;
+
 
 
         public Integer getRwFieldId() {
@@ -130,6 +132,14 @@ public class RwField  {
         this.fieldValue = fieldValue;
     }
 
+         public Integer getDecimalPosition() {
+         return decimalPosition;
+    }
+
+         public void setDecimalPosition(Integer decimalPosition) {
+        this.decimalPosition = decimalPosition;
+    }
+
         public RwField copy() {
             RwField copy = new RwField();
 
@@ -142,8 +152,9 @@ public class RwField  {
             copy.setFieldType(getFieldType());
             copy.setPosition(getPosition());
             copy.setUniqueid(getUniqueid());
-            copy.setRwRecord(getRwRecord());
+            copy.setRwRecord(getRwRecord()); //TODO make new record
             copy.setFieldValue(getFieldValue());
+            copy.setDecimalPosition(getDecimalPosition());
             return copy;
         }
 

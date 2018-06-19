@@ -16,6 +16,17 @@ public class StringUtils {
         return string.replace(Character.toString(c), "\"" + c + "\"");
     }
 
+    public static String padLeft(String string, int length, char c) {
+        StringBuilder buffer = new StringBuilder();
+        int padLength = Math.max(0, length - string.length());
+
+        for (int i = 0; i < padLength; i++) {
+            buffer.append(c);
+        }
+
+        return buffer.toString() + string;
+    }
+
     public static void cutTail(StringBuilder string, int tail) {
         if (string == null) {
             throw new NullPointerException("string");
@@ -77,5 +88,7 @@ public class StringUtils {
     public static List<String> split(String string, char delimiter) {
         return split(string, Character.toString(delimiter), false);
     }
-
+    public static boolean isTrimmedEmpty(String string) {
+        return string == null || string.trim().equals("");
+    }
 }

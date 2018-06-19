@@ -1,5 +1,7 @@
+drop TABLE  if exists BOND_DESCRIPTIVE ; 
+
 CREATE TABLE BOND_DESCRIPTIVE(
-  ID_BB_UNIQUE varchar(30) NOT NULL,
+  ID_BB_UNIQUE varchar(30), --not null
   ID_BB_COMPANY int NULL,
   ID_BB_SECURITY int NULL,
   TICKER varchar(50) NULL,
@@ -276,8 +278,9 @@ CREATE TABLE BOND_DESCRIPTIVE(
   ID_BB_GLOBAL_COMPANY_NAME varchar(180) NULL,
   UNDL_ID_BB_GLOBAL varchar(50) NULL,
   ID_CINS varchar (9) NULL,
-  RowTimestamp timestamp NOT NULL,
+  RowTimestamp timestamp NOT NULL DEFAULT (NOW()),
   GICS_SUB_INDUSTRY int NULL,
   GICS_SUB_INDUSTRY_NAME varchar (30) NULL
 ) ;
 
+select * from BOND_DESCRIPTIVE;

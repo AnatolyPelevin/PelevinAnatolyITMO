@@ -15,6 +15,7 @@ public class RwView {
     private String viewDescription;
     private String uniqueid;
     private Set<RwRecord> rwRecords;
+    private RwDatabase rwDatabase;
 
     public Integer getRwViewId() {
         return rwViewId;
@@ -69,6 +70,13 @@ public class RwView {
         this.rwRecords = rwRecords;
     }
 
+    public RwDatabase getRwDatabase() {
+        return rwDatabase;
+    }
+
+    public void setRwDatabase(RwDatabase rwDatabase) {
+        this.rwDatabase = rwDatabase;
+    }
 
 
     public RwRecord findRecordByName(String name) {
@@ -108,6 +116,7 @@ public class RwView {
         copy.setViewType(viewType);
         copy.setViewDescription(viewDescription);
         copy.setUniqueid(uniqueid);
+        copy.setRwDatabase(rwDatabase);
         copy.setRwRecords(getRwRecords());
 
         return copy;

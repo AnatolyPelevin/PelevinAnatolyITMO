@@ -33,13 +33,14 @@ public class TransformJob {
             while ((thisLine = fileReaderInterface.nextRecord()) != null) {
                // System.out.println(thisLine);
                 RwRecord rwRecord =  rawRecordParserInterface.parseRecord(thisLine);
+                fileWriterInterface.writeRecord(rwRecord);
                 Set<RwField> rwFields = rwRecord.getRwFields();
                 //System.out.println(rwRecord.toString());
-                rwFields.stream().forEach(r->System.out.println(r.getFieldValue()));
+                System.out.println("*****************************");
+                rwFields.stream().forEach(r->System.out.println(r.getFieldName() + " = " +  r.getFieldValue()));
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
     }
-
 }

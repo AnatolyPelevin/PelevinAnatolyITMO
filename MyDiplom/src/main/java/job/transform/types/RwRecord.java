@@ -4,10 +4,14 @@ import dictionaries.RecordTerminator;
 import dictionaries.RecordType;
 import objectmodel.RwField;
 import objectmodel.RwFile;
+import objectmodel.RwView;
 import utils.CollectionUtils;
 import utils.NullArgumentException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RwRecord {
     private Integer rwRecordId;
@@ -18,7 +22,7 @@ public class RwRecord {
     private String uniqueid;
     private String recordTypeString;
     private Set<RwField> rwFields;
-//    private RwView rwView;
+     private RwView rwView;
      private RwFile rwFile;
 
 
@@ -99,15 +103,15 @@ public class RwRecord {
     }
 
 
-//    public RwView getRwView() {
-//        return rwView;
-//    }
-//
-//    public void setRwView(RwView rwView) {
-//        this.rwView = rwView;
-//    }
-//
-//
+    public RwView getRwView() {
+        return rwView;
+    }
+
+    public void setRwView(RwView rwView) {
+        this.rwView = rwView;
+    }
+
+
     public RwFile getRwFile() {
         return rwFile;
     }
@@ -146,6 +150,15 @@ public class RwRecord {
         return null;
     }
 
+    public List<RwField> getKeyFields(){
+        List<RwField> keyFields = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(rwFields)) {
+            keyFields = rwFields.stream()
+                    .filter(rwField -> (rwField.getKeyField() !=null && rwField.getKeyField() > 0))
+                    .collect(Collectors.toCollection(ArrayList::new));
+        }
+        return keyFields;
+    }
 
 
     @Override
@@ -155,10 +168,10 @@ public class RwRecord {
         if (rwFile != null) {
             sb.append(rwFile);
         }
-//
-//        if (rwView != null) {
-//            sb.append(rwView);
-//        }
+
+        if (rwView != null) {
+            sb.append(rwView);
+        }
 
         sb.append(", name = ").append(recordName).append("]");
 
@@ -177,6 +190,7 @@ public class RwRecord {
         copy.setRecordTypeString(getRecordTypeString());
         copy.setUniqueid(getUniqueid());
         copy.setRwFile(getRwFile());
+        copy.setRwView(getRwView());
         copy.setRwFields(getRwFields());
 
         return copy;

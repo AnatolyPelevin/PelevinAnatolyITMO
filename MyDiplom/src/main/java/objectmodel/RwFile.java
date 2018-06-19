@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RwFile {
+    private Integer rwFileId;
     private String filename;
     private String recordTypeString;
     private String attributeParserClass;
@@ -16,6 +17,14 @@ public class RwFile {
     private String recordFilterClass;
     private Set<RecordFilterParameter> recordFilterParameters  = new HashSet<>();
 
+
+    public Integer getRwFileId() {
+        return rwFileId;
+    }
+
+    public void setRwFileId(Integer rwFileId) {
+        this.rwFileId = rwFileId;
+    }
 
     public String getFilename() {
         return filename;
