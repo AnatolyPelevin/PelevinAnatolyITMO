@@ -6,7 +6,7 @@ import job.transform.types.RwRecord;
 import java.util.Collection;
 
 
-public class RwField  {
+public class RwField  implements Cloneable {
         private Integer rwFieldId;
         private String fieldName;
         private Integer keyField;
@@ -22,6 +22,9 @@ public class RwField  {
         private String fieldValue;
         private Integer decimalPosition;
 
+    public RwField clone() throws CloneNotSupportedException{
+        return (RwField)super.clone();
+    }
 
 
         public Integer getRwFieldId() {

@@ -233,4 +233,11 @@ public class ShowWork {
         records.add(rwRecord);
         rwView.setRwRecords(records);
     }
+
+    public static RwView getRwView() {
+        return rwView;
+    }
+    public static RwRecord getRwRecord() {
+        return rwRecord;
+    }
 }

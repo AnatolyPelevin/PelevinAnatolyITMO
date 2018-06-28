@@ -1,6 +1,5 @@
-import WordCount.*;
-
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * 1. Необходимо выполнить подсчет топ 100 слов параллельно.
@@ -21,11 +20,22 @@ import java.io.IOException;
  в) Повар будит официанта и передает ему блюдо, официант будит клиента и отдает заказ.
  */
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
+//----------------------------------------------------------------------------
+       // WordCount wct  = new WordCount(null);
+     //   wct.showTopNWords(10);
+//----------------------------------------------------------------------------
+    //    TestPizza.testPizza();
+//----------------------------------------------------------------------------
+//        WordCountWithQueue wctq  = new WordCountWithQueue(null);
+//        wctq.showTopNWords(10);
+//----------------------------------------------------------------------------
 
-        WordCount wct  = new WordCount(null);
-        wct.showTopNWords(10);
+//        WordCountPool wctp  = new WordCountPool(null);
+//        wctp.showTopNWords(10);
 
 
+        WordCountLamda wl = new WordCountLamda(null);
+        wl.showTopNWords(10);
     }
 }

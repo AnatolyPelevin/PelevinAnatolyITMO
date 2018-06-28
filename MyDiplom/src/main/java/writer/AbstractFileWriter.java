@@ -12,6 +12,7 @@ import writer.statementbuild.StatementBuilder;
 import writer.statementexecutor.SingleStatementExecutorFactory;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +52,13 @@ public class AbstractFileWriter implements FileWriterInterface {
 
     @Override
     public void close() throws RecordWriterException {
-
+        connectionsMap.values().forEach(connection -> {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
