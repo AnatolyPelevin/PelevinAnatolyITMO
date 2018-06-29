@@ -15049,3 +15049,10 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme .myPanel .v-panel-caption {
+	font-size: 20px;
+	color: deeppink;
+	background-color: black;
+	background-image: none;
+}

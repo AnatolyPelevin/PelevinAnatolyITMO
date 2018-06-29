@@ -34,6 +34,22 @@
 @mixin mytheme {
   @include valo;
 
+  .myPanel .v-panel-caption{
+    font-size: 20px ;
+    color: deeppink;
+    background-color:black;
+   // background-image: -webkit-linear-gradient(right, #414141 0%, black 9px);
+    background-image:none;
+   // background-image: linear-gradient(to left,#414141 0%, black 9px);
+  }
+
+
+ //.myButton .v-button{
+ //  color: deeppink;
+ //  background-color: black;
+ //}
+
+
 
   // Insert your own theme rules here
 }

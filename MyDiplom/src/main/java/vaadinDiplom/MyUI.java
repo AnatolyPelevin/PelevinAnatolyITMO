@@ -55,13 +55,12 @@ public class MyUI extends UI {
 
 
         panel = new Panel("Security ETL");
-      //  panel.setPrimaryStyleName("customStyle");
+        panel.setPrimaryStyleName("myPanel");
         panel.setSizeFull();
         layout.addComponent(panel);
 
 
         gridResult = new Grid<>();
-        gridResult.setStyleName("v-grid-test");
         MultiSelectionModel<ArrayList<RwField>> selectionModel
                 = (MultiSelectionModel<ArrayList<RwField>>) gridResult.setSelectionMode(Grid.SelectionMode.MULTI);
 
@@ -86,6 +85,7 @@ public class MyUI extends UI {
         content.addComponent(addShowButton());
         content.addComponent(addResultButton());
         content.addComponent(gridResult);
+        content.setExpandRatio(gridResult, 1);
 //
 //        //layout.addComponents(addShowButton(), addResultButton(), gridResult);
 
@@ -105,11 +105,12 @@ public class MyUI extends UI {
             }
         });
         resultButton.setEnabled(false);
+      //  resultButton.setPrimaryStyleName("myButton");
         return resultButton;
     }
 
     private Button addShowButton(){
-        Button buttonShowWork  = new Button("Show work");
+        Button buttonShowWork  = new Button("Load securities");
         buttonShowWork.addClickListener(e -> {
             try {
                 ShowWork.showWork();
@@ -123,7 +124,7 @@ public class MyUI extends UI {
                 er.printStackTrace();
             }
         });
-
+     //   buttonShowWork.setPrimaryStyleName("myButton");
         return buttonShowWork;
     }
 
